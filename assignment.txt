@@ -49,3 +49,6 @@ Understand how to use conditional logic to execute different stages based on the
 Learn how to integrate Jenkins with Terraform to automate infrastructure provisioning and deletion.
 Understand how to securely store and manage secrets, such as cloud credentials and Terraform backend credentials, using Jenkins Credentials rather than hardcoding them in the pipeline.
 Implement appropriate safeguards, such as manual approval before applying or destroying infrastructure.
+
+
+task2: try to setup a agent/node for jenkins and then use that node to run the pipelines
