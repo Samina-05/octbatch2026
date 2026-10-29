@@ -52,3 +52,70 @@ Implement appropriate safeguards, such as manual approval before applying or des
 
 
 task2: try to setup a agent/node for jenkins and then use that node to run the pipelines
+
+29th oct
+ansible assignment
+
+# Ansible Assignment: Role-Based and Condition-Based Automation
+
+## Objective
+Develop an Ansible automation project using reusable roles and conditional logic to install and configure Nginx, manage users, and control services based on user-provided inputs.
+
+### Task 1: Create an Ansible Role
+1. Create an Ansible role named `nginx`.
+2. Use `ansible-galaxy` to generate the role directory structure.
+3. Install Nginx on Ubuntu or RHEL-based Linux systems.
+4. Start and enable the Nginx service.
+5. Deploy a custom `index.html` page using a template.
+6. Use a handler to restart Nginx whenever its configuration changes.
+
+### Task 2: Implement Condition-Based Automation
+Create a playbook that accepts the following inputs:
+
+- `web_server`: `nginx` or `docker`
+- `environment`: `dev`, `test`, or `prod`
+- `create_user`: `true` or `false`
+- `service_action`: `start`, `stop`, or `restart`
+
+Requirements:
+
+1. Execute the Nginx role only when `web_server=nginx`.
+2. If `web_server=docker`, install Docker and ensure its service is running.
+3. Deploy an environment-specific web page based on the `environment` variable.
+4. Create a Linux user named `devuser` only when `create_user=true`.
+5. Start, stop, or restart the selected service according to `service_action`.
+6. Display an error and stop execution if an invalid input is supplied.
+7. Use `when`, `register`, `assert`, and `handlers` wherever appropriate.
+
+### Task 3: Execution and Validation
+1. Run the playbook with different combinations of input variables.
+2. Verify that the correct role and conditional tasks execute.
+3. Run a syntax check before execution.
+4. Execute the playbook a second time and verify idempotency.
+5. Document the results and explain how the conditions control task execution.
+
+## Expected Commands
+
+Create the role:
+
+`ansible-galaxy role init nginx`
+
+Check playbook syntax:
+
+`ansible-playbook site.yml --syntax-check`
+
+Run for development:
+
+`ansible-playbook -i inventory site.yml -e "web_server=nginx environment=dev create_user=true service_action=start"`
+
+Run for production:
+
+`ansible-playbook -i inventory site.yml -e "web_server=docker environment=prod create_user=false service_action=start"`
+
+## Submission Deliverables
+- Ansible project directory structure.
+- Role files, templates, handlers, and playbook.
+- Inventory file.
+- Execution outputs for both scenarios.
+- Syntax-check output.
+- Explanation of the conditional logic and idempotency results.
